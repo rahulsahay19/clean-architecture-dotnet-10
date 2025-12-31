@@ -1,0 +1,51 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.tlog
+*.lastbuildstate
+
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+
+# Rider
+.idea/
+*.sln.iml
+
+# ASP.NET
+appsettings*.json
+appsettings*.json
+*.db
+*.bak
+*.log
+*.pdb
+*.mdb
+*.sdf
+*.cache
+*.vspscc
+*.vssscc
+*.scc
+
+# Angular
+node_modules/
+dist/
+out-tsc/
+coverage/
+*.js
+*.map
+*.d.ts
