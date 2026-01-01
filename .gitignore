@@ -28,8 +28,6 @@ x86/
 *.sln.iml
 
 # ASP.NET
-appsettings*.json
-appsettings*.json
 *.db
 *.bak
 *.log
