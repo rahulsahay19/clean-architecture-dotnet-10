@@ -12,8 +12,24 @@ services:
     restart: always
     ports:
       - "6379:6379"  
+   
+  discountdb:
+    container_name: discountdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Password@1
+      - POSTGRES_DB=DiscountDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  
   catalog:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -34,3 +50,12 @@ services:
       - basketdb
     ports:
       - "8001:8080"
+
+  discount:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings__ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=Password@1;"      
+    depends_on:
+       - discountdb          
+    ports:
+      - "8002:8080"
