@@ -30,7 +30,9 @@ namespace Basket.Application.Handlers
             // Save to Redis
             var updatedCart = await _basketRepository.UpsertBasket(shoppingCartEntity);
             // Convert back to Response
-            return updatedCart.ToShoppingCartResponse();
+            // return updatedCart.ToShoppingCartResponse();
+            //return updatedCart.ToResponseUsingDelegate();
+            return BasketMapper.MapCart(updatedCart);
         }
     }
 }

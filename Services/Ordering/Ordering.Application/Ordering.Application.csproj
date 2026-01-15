@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ordering.Core\Ordering.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mapper\" />
+    <Folder Include="Orders\CreateOrder\" />
+    <Folder Include="Orders\DeleteOrder\" />
+    <Folder Include="Orders\GetOrders\" />
+    <Folder Include="Orders\UpdateOrder\" />
+  </ItemGroup>
+
+</Project>

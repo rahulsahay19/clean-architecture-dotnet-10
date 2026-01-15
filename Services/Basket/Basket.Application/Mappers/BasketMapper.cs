@@ -1,11 +1,28 @@
 ﻿using Basket.Application.Commands;
 using Basket.Application.Responses;
 using Basket.Core.Entities;
+using System.Runtime.CompilerServices;
 
 namespace Basket.Application.Mappers
 {
     public static class BasketMapper
     {
+        
+        public static ShoppingCart ToShoppingCartEntity(this CreateShoppingCartCommand command)
+        {
+            return new ShoppingCart
+            {
+                UserName = command.UserName,
+                Items = command.Items.Select(item => new ShoppingCartItem
+                {
+                    Quantity = item.Quantity,
+                    ImageFile = item.ImageFile,
+                    Price = item.Price,
+                    ProductId = item.ProductId,
+                    ProductName = item.ProductName
+                }).ToList()
+            };
+        }
         public static ShoppingCartResponse ToShoppingCartResponse(this ShoppingCart shoppingCart)
         {
             return new ShoppingCartResponse
@@ -21,7 +38,8 @@ namespace Basket.Application.Mappers
                 }).ToList()
             };
         }
-        //Delegate Based Mapper
+
+        //Delegate based mapper
         public static ShoppingCartResponse ToResponseUsingDelegate(this ShoppingCart cart)
             => MapCart(cart);
 
@@ -38,20 +56,5 @@ namespace Basket.Application.Mappers
                     ProductName = item.ProductName
                 }).ToList()
             };
-        public static ShoppingCart ToShoppingCartEntity(this CreateShoppingCartCommand command)
-        {
-            return new ShoppingCart
-            {
-                UserName = command.UserName,
-                Items = command.Items.Select(item => new ShoppingCartItem
-                {
-                    Quantity = item.Quantity,
-                    ImageFile = item.ImageFile,
-                    Price = item.Price,
-                    ProductId = item.ProductId,
-                    ProductName = item.ProductName
-                }).ToList()
-            };
-        }
     }
 }
