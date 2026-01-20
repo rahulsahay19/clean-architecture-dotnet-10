@@ -11,11 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapper\" />
-    <Folder Include="Orders\CreateOrder\" />
-    <Folder Include="Orders\DeleteOrder\" />
-    <Folder Include="Orders\GetOrders\" />
-    <Folder Include="Orders\UpdateOrder\" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.2" />
   </ItemGroup>
 
 </Project>

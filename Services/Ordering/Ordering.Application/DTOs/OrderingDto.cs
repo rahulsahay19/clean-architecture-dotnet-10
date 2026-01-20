@@ -12,6 +12,7 @@
         string ZipCode,
         string CardName,
         string CardNumber,
+        string Expiration,
         string Cvv,
         int PaymentMethod);
 
@@ -28,6 +29,7 @@
         string ZipCode,
         string CardName,
         string CardNumber,
+        string Expiration,
         string Cvv,
         int PaymentMethod);
 
