@@ -15,11 +15,23 @@ builder.Services.AddOrderingServices(builder.Configuration);
 var app = builder.Build();
 
 //Migration
-app.MigrateDatabase<OrderContext>((context, services) =>
+//app.MigrateDatabase<OrderContext>((context, services) =>
+//{
+//    var logger = services.GetService<ILogger<OrderContextSeed>>();
+//    OrderContextSeed.SeedAsync(context, logger).Wait();
+//});
+using (var scope = app.Services.CreateScope())
 {
-    var logger = services.GetService<ILogger<OrderContextSeed>>();
-    OrderContextSeed.SeedAsync(context, logger).Wait();
-});
+    var logger = scope.ServiceProvider
+        .GetRequiredService<ILogger<Program>>();
+
+    var configuration = scope.ServiceProvider
+        .GetRequiredService<IConfiguration>();
+
+    DbMigrationRunner.Run(
+        configuration.GetConnectionString("OrderingConnectionString"),
+        logger);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -9,7 +9,7 @@ services:
    image: postgres
 
   orderdb:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: postgres
   
   catalog:
    image: ${DOCKER_REGISTRY-}catalog
@@ -28,6 +28,12 @@ services:
     build:
       context: .
       dockerfile: Services/Discount/Discount.API/Dockerfile
+
+  ordering:
+    image: ${DOCKER_REGISTRY-}ordering
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
   
 volumes:

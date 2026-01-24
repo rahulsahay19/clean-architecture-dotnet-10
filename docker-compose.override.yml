@@ -31,20 +31,22 @@ services:
       retries: 5
 
   orderdb:
+    image: postgres:15
     container_name: orderdb
     environment:
-      SA_PASSWORD: "Rahul1234567"
-      ACCEPT_EULA: "Y"
-    restart: always
+      POSTGRES_DB: Orderingdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Password@1
     ports:
-      - "1433:1433"
+      - "5433:5432"
     volumes:
-      - orderdb-data:/var/opt/mssql
+      - orderdb-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Rahul1234567' -Q 'select 1'"]
-      interval: 10s
-      timeout: 10s
-      retries: 3
+      test: ["CMD-SHELL", "pg_isready -U admin"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 
   catalog:
     environment:
@@ -76,5 +78,14 @@ services:
        - discountdb          
     ports:
       - "8002:8080"
+
+  ordering:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings__ConnectionString=Server=orderdb;Port=5432;Database=Orderingdb;User Id=admin;Password=Password@1;"            
+    depends_on:
+      - orderdb                        
+    ports:
+      - "8003:8080" 
 
   
