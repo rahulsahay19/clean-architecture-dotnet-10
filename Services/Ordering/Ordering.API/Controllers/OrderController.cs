@@ -5,6 +5,7 @@ using Ordering.Application.Orders.GetOrders;
 using Ordering.Application.Orders.UpdateOrder;
 using Ordering.Application.DTOs;
 using Ordering.Application.Mapper;
+using Ordering.Application.Abstractions;
 
 namespace Ordering.API.Controllers
 {
@@ -12,18 +13,18 @@ namespace Ordering.API.Controllers
     [Route("api/v1/[controller]")]
     public class OrderController : ControllerBase
     {
-        private readonly CreateOrderHandler _createOrderHandler;
-        private readonly UpdateOrderHandler _updateOrderHandler;
-        private readonly DeleteOrderHandler _deleteOrderHandler;
-        private readonly GetOrderListHandler _getOrderListHandler;
+        private readonly ICommandHandler<CreateOrderCommand, int> _createOrderHandler;
+        private readonly ICommandHandler<UpdateOrderCommand> _updateOrderHandler;
+        private readonly ICommandHandler<DeleteOrderCommand> _deleteOrderHandler;
+        private readonly IQueryHandler<GetOrderListQuery, List<OrderDto>> _getOrderListHandler;
         private readonly ILogger<OrderController> _logger;
 
         public OrderController(
-            CreateOrderHandler createOrderHandler,
-            UpdateOrderHandler updateOrderHandler,
-            DeleteOrderHandler deleteOrderHandler,
-            GetOrderListHandler getOrderListHandler,
-            ILogger<OrderController> logger)
+          ICommandHandler<CreateOrderCommand, int> createOrderHandler,
+          ICommandHandler<UpdateOrderCommand> updateOrderHandler,
+          ICommandHandler<DeleteOrderCommand> deleteOrderHandler,
+          IQueryHandler<GetOrderListQuery, List<OrderDto>> getOrderListHandler,
+          ILogger<OrderController> logger)
         {
             _createOrderHandler = createOrderHandler;
             _updateOrderHandler = updateOrderHandler;

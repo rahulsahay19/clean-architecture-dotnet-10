@@ -1,10 +1,9 @@
 ﻿namespace Ordering.Core.Entities
 {
-    public abstract class EntityBaseEF
+    public abstract class EntityBase
     {
         //use this in derived class
-        // public int Id { get; protected set; } //EF Use Case
-        public int Id { get; set; }
+        public int Id { get; protected set; } //EF Use Case
         public string? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? LastModifiedBy { get; set; }

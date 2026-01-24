@@ -9,7 +9,7 @@ services:
    image: postgres
 
   orderdb:
-    image: postgres
+    image: mcr.microsoft.com/mssql/server:2022-latest
   
   catalog:
    image: ${DOCKER_REGISTRY-}catalog

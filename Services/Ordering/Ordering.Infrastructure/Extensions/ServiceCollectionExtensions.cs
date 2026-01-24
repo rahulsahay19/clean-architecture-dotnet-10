@@ -17,9 +17,9 @@ namespace Ordering.Infrastructure.Extensions
                 new SqlConnection(
                     configuration.GetConnectionString("OrderingConnectionString")));
 
-            //services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
-            //services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IOrderRepository, DapperOrderRepository>();
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
+            services.AddScoped<IOrderRepository, OrderRepository>();
+           // services.AddScoped<IOrderRepository, DapperOrderRepository>();
 
             return services;
         }
