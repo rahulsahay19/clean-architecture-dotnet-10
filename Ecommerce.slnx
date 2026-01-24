@@ -23,6 +23,7 @@
     <Project Path="Services/Ordering/Ordering.Application/Ordering.Application.csproj" Id="cc487f63-3910-421c-b980-630aa1db19bb" />
     <Project Path="Services/Ordering/Ordering.Core/Ordering.Core.csproj" Id="3db1b52c-da14-4852-9f14-251d05562fc5" />
     <Project Path="Services/Ordering/Ordering.Infratructure/Ordering.Infrastructure.csproj" Id="58693fb7-f686-4657-b73e-52d6d073b435" />
+    <Project Path="Services/Ordering/Ordering.Migrations/Ordering.Migrations.csproj" Id="de7d73b7-dcd2-4eeb-b3a3-9ecb36810f12" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />

@@ -16,12 +16,20 @@ namespace Ordering.API.Extensions
             //1 Database
             services.AddDbContext<OrderContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString"),
+                options.UseSqlServer(
+                    configuration.GetConnectionString("OrderingConnectionString"),
                     sqloptions =>
                     {
-                        sqloptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+                        sqloptions.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(10),
+                            errorNumbersToAdd: null);
+
+                        // THIS IS THE FIX
+                        sqloptions.MigrationsAssembly("Ordering.Infrastructure");
                     });
             });
+
 
             //2 Repositories
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));

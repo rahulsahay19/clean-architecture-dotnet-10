@@ -48,6 +48,48 @@ namespace Ordering.Application.Mapper
             orderToUpdate.Cvv = request.Cvv;
             orderToUpdate.PaymentMethod = request.PaymentMethod;
         }
+        public static CreateOrderCommand ToCommand(this CreateOrderDto dto)
+        {
+            return new CreateOrderCommand
+            {
+                UserName = dto.UserName,
+                TotalPrice = dto.TotalPrice,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                EmailAddress = dto.EmailAddress,
+                AddressLine = dto.AddressLine,
+                Country = dto.Country,
+                State = dto.State,
+                ZipCode = dto.ZipCode,
+                CardName = dto.CardName,
+                CardNumber = dto.CardNumber,
+                Expiration = dto.Expiration,
+                Cvv = dto.Cvv,
+                PaymentMethod = dto.PaymentMethod
+            };
+        }
+
+        public static UpdateOrderCommand ToCommand(this OrderDto dto)
+        {
+            return new UpdateOrderCommand
+            {
+                Id = dto.Id,
+                UserName = dto.UserName,
+                TotalPrice = dto.TotalPrice,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                EmailAddress = dto.EmailAddress,
+                AddressLine = dto.AddressLine,
+                Country = dto.Country,
+                State = dto.State,
+                ZipCode = dto.ZipCode,
+                CardName = dto.CardName,
+                CardNumber = dto.CardNumber,
+                Expiration = dto.Expiration,
+                Cvv = dto.Cvv,
+                PaymentMethod = dto.PaymentMethod
+            };
+        }
     }
    
 }
