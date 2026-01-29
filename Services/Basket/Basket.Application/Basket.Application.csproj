@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.5.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.2" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.76.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.76.0" />
     <PackageReference Include="Grpc.Tools" Version="2.76.0">
@@ -16,8 +18,10 @@
     <PackageReference Include="MediatR" Version="14.0.0" />
   </ItemGroup>
 
+  
   <ItemGroup>
-    <ProjectReference Include="..\Basket.Core\Basket.Core.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\EventBus.Messages\EventBus.Messages.csproj" />
+    <ProjectReference Include="..\Basket.Core\Basket.Core.csproj" />    
   </ItemGroup>
 
   <ItemGroup>
