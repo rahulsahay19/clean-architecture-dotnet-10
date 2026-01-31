@@ -97,4 +97,11 @@ services:
     ports:
       - "8003:8080" 
 
+  payment:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672/"      
+    ports:
+      - "8004:8080"  
+
   

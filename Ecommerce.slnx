@@ -27,6 +27,9 @@
     <Project Path="Services/Ordering/Ordering.Core/Ordering.Core.csproj" Id="3db1b52c-da14-4852-9f14-251d05562fc5" />
     <Project Path="Services/Ordering/Ordering.Infrastructure/Ordering.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/Services/Payment/">
+    <Project Path="Services/Payment/Payment/Payment.csproj" Id="79d50bf0-526e-46a0-873c-79ebd512fa81" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>

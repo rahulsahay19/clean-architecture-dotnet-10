@@ -39,7 +39,14 @@ services:
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
   
+  payment:
+    image: ${DOCKER_REGISTRY-}payment
+    build:
+      context: .
+      dockerfile: Services/Payment/Payment/Dockerfile
+
 volumes:
  mongo_data:
  postgres_data:
  orderdb-data:
+
