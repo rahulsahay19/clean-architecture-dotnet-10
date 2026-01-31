@@ -10,6 +10,8 @@
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="dbup" Version="5.0.41" />
     <PackageReference Include="dbup-sqlserver" Version="6.0.16" />
+    <PackageReference Include="MassTransit" Version="8.5.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.2" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -21,9 +23,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Infrastructure\EventBus.Messages\EventBus.Messages.csproj" />
     <ProjectReference Include="..\Ordering.Application\Ordering.Application.csproj" />
   </ItemGroup>
 

@@ -20,6 +20,8 @@ namespace Ordering.Application.Orders.CreateOrder
         {
             var orderEntity = command.ToEntity();
             var generatedOrder = await _orderRepository.AddAsync(orderEntity);
+            var outboxMessage = OrderMapper.ToOutboxMessage(generatedOrder, command.CorrelationId);
+            await _orderRepository.AddOutboxMessageAsync(outboxMessage);
             _logger.LogInformation($"Order with ID {generatedOrder.Id} successfully created.");
             return generatedOrder.Id;
         }

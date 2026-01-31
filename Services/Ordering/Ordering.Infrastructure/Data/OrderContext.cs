@@ -10,6 +10,24 @@ namespace Ordering.Infrastructure.Data
             
         }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OutboxMessage> OutboxMessages { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<OutboxMessage>(builder =>
+            {
+                builder.HasKey(x => x.Id);
+                builder.HasIndex(x => x.CorrelationId); //for faster lookups
+                builder.Property(x => x.Type).IsRequired();
+                builder.Property(x => x.Content).IsRequired();
+                builder.Property(x => x.OccurredOn).IsRequired();
+                builder.Property(x => x.ProcessedOn).IsRequired(false);
+            });
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Status)
+                .HasConversion<string>();
+        }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
