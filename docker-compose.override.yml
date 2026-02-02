@@ -46,6 +46,22 @@ services:
       timeout: 10s
       retries: 3
 
+  identitydb:
+    container_name: identitydb
+    environment:
+      SA_PASSWORD: "StrongPassword123!"
+      ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+      - "1434:1433"
+    volumes:
+      - identitydb-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'StrongPassword123!' -Q 'select 1'"]
+      interval: 10s
+      timeout: 10s
+      retries: 3   
+
   rabbitmq:
     container_name: rabbitmq
     restart: always
@@ -104,4 +120,17 @@ services:
     ports:
       - "8004:8080"  
 
+  
+  identity:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings__IdentityConnection=Server=identitydb;Database=IdentityDb;User Id=sa;Password=StrongPassword123!;TrustServerCertificate=True;"
+      - "Jwt__Key=super_secure_secret_key_1234567890!@#"
+      - "Jwt__Issuer=ecommerce.identity"
+      - "Jwt__Audience=ecommerce.clients"
+      - "Jwt__DurationInMinutes=60"      
+    depends_on:
+      - identitydb          
+    ports: 
+      - "8005:8080"
   

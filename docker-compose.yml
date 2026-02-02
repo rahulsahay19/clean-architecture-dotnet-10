@@ -11,6 +11,9 @@ services:
   orderdb:
     image: mcr.microsoft.com/mssql/server:2022-latest
 
+  identitydb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
   
@@ -45,8 +48,15 @@ services:
       context: .
       dockerfile: Services/Payment/Payment/Dockerfile
 
+  identity:
+    image: ${DOCKER_REGISTRY-}identity
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity/Dockerfile
+
 volumes:
  mongo_data:
  postgres_data:
  orderdb-data:
+ identitydb-data:
 
