@@ -1,9 +1,11 @@
+using Common.Logging;
 using EventBus.Messages.Common;
 using MassTransit;
 using Ordering.API.Extensions;
 using Ordering.Application.Dispatcher;
 using Ordering.Application.EventBusConsumer;
 using Ordering.Infrastructure.Data;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +48,10 @@ builder.Services.AddMassTransit(config =>
         });
     });
 });
+
+//Register Logging
+builder.Host.UseSerilog(Logging.ConfigureLogger);
+
 var app = builder.Build();
 
 //Migration

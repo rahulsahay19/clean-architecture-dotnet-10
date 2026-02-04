@@ -16,7 +16,7 @@ namespace Payment.Consumer
         public async Task Consume(ConsumeContext<OrderCreatedEvent> context)
         {
             var message = context.Message;
-            _logger.LogInformation("Processing Payment for Order Id: {OrderId}", message.Id);
+            _logger.LogInformation("Processing Payment for Order Id: {@OrderId}", message.Id);
 
             // Simulate for Payment Processing
             await Task.Delay(1000);
@@ -29,7 +29,7 @@ namespace Payment.Consumer
                     CorrelationId = context.CorrelationId.Value
                 };
                 await _publishEndpoint.Publish(completedEvent);
-                _logger.LogInformation("Payment success for Order Id: {Order Id} and Correlation Id: {CorrelationId}", message.Id, message.CorrelationId);
+                _logger.LogInformation("Payment success for Order Id: {@Order Id} and Correlation Id: {@CorrelationId}", message.Id, message.CorrelationId);
             }
             else
             {
@@ -40,7 +40,7 @@ namespace Payment.Consumer
                     Reason = "Total price was zero or negative."
                 };
                 await _publishEndpoint.Publish(failedEvent);
-                _logger.LogWarning("Payment failed for Order Id: {Order Id} and Correlation Id: {CorrelationId}", message.Id, message.CorrelationId);
+                _logger.LogWarning("Payment failed for Order Id: {@Order Id} and Correlation Id: {@CorrelationId}", message.Id, message.CorrelationId);
             }
         }
     }

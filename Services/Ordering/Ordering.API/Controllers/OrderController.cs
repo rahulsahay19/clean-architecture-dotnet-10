@@ -40,7 +40,7 @@ namespace Ordering.API.Controllers
 
             var orders = await _getOrderListHandler.Handle(query, cancellationToken);
 
-            _logger.LogInformation("Orders fetched for user {UserName}", userName);
+            _logger.LogInformation("Orders fetched for user {@UserName}", userName);
             return Ok(orders);
         }
 

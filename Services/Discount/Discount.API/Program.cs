@@ -1,8 +1,10 @@
+using Common.Logging;
 using Discount.API.Services;
 using Discount.Application.Handlers;
 using Discount.Core.Repositories;
 using Discount.Infrastructure.Repositories;
 using Discount.Infrastructure.Settings;
+using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,9 @@ builder.Services.AddGrpc();
 //Database Settings 
 builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection("DatabaseSettings"));
+
+//Register Logging
+builder.Host.UseSerilog(Logging.ConfigureLogger);
 
 var app = builder.Build();
 

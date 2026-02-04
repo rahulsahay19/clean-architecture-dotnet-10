@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Infrastructure/">
+    <Project Path="Infrastructure/Common.Logging/Common.Logging.csproj" Id="6f9919c1-d37e-477b-bf56-6a38b5d6e8b8" />
     <Project Path="Infrastructure/EventBus.Messages/EventBus.Messages.csproj" Id="2fa3063e-38c1-4b04-a7f8-c76b9d8b6075" />
   </Folder>
   <Folder Name="/Services/" />

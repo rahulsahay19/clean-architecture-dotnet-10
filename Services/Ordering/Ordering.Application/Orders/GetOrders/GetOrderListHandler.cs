@@ -19,7 +19,7 @@ namespace Ordering.Application.Orders.GetOrders
         public async Task<List<OrderDto>> Handle(GetOrderListQuery query, CancellationToken cancellationToken)
         {
             var orders = await _orderRepository.GetOrdersByUserName(query.UserName);
-            _logger.LogInformation("Successfully fetched the order.");
+            _logger.LogInformation("Successfully fetched the order for {@UserName}", query.UserName);
             return orders.Select(o => o.ToDto()).ToList();
         }
     }

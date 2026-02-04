@@ -11,10 +11,12 @@ namespace Basket.API.Controllers
     public class BasketController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<BasketController> _logger;
 
-        public BasketController(IMediator mediator) 
+        public BasketController(IMediator mediator, ILogger<BasketController> logger) 
         {
             _mediator = mediator;
+            _logger = logger;
         }
         //Get: api/v1/basket/{userName}
         [HttpGet("{userName}")]
@@ -22,6 +24,7 @@ namespace Basket.API.Controllers
         {
             var query = new GetBasketByUserNameQuery(userName);
             var result = await _mediator.Send(query);
+            _logger.LogInformation("Fetching Basket for {@UserName}", userName);
             return Ok(result);
         }
 

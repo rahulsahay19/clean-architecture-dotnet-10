@@ -1,9 +1,11 @@
+using Common.Logging;
 using Identity.Data;
 using Identity.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,6 +47,9 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
+
+//Register Logging
+builder.Host.UseSerilog(Logging.ConfigureLogger);
 
 var app = builder.Build();
 

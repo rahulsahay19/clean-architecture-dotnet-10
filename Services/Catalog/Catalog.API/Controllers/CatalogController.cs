@@ -13,16 +13,19 @@ namespace Catalog.API.Controllers
     public class CatalogController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<CatalogController> _logger;
 
-        public CatalogController(IMediator mediator)
+        public CatalogController(IMediator mediator, ILogger<CatalogController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         [HttpGet("GetAllProducts")]
         public async Task<ActionResult<IList<ProductDto>>> GetAllProducts([FromQuery] CatalogSpecParams catalogSpecParams)
         {
             var query = new GetAllProductsQuery(catalogSpecParams);
             var result = await _mediator.Send(query);
+            _logger.LogInformation("Fetching products with {@filter}", catalogSpecParams);
             return Ok(result);
         }
         [HttpGet("{id}")]
