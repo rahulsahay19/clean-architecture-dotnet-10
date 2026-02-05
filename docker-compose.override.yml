@@ -160,3 +160,19 @@ services:
     ports:
       - "5601:5601"
   
+  ocelot.apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "Jwt__Key=super_secure_secret_key_1234567890!@#"
+      - "Jwt__Issuer=ecommerce.identity"
+      - "Jwt__Audience=ecommerce.clients"
+    depends_on:
+      - identity
+      - catalog
+      - basket
+      - ordering
+      - payment
+      - discount
+    ports:
+      - "8010:8080"  
+  

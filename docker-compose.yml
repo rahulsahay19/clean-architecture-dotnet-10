@@ -60,6 +60,12 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:8.14.3
 
+  ocelot.apigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/ApiGateway/Dockerfile
+
 volumes:
  mongo_data:
  postgres_data:
