@@ -39,7 +39,7 @@ Angular Frontend provides seamless end-to-end shopping experience.
 
 ## Solution Overview:
 
-![Image](https://github.com/user-attachments/assets/a0cb1e39-081e-4415-bfb5-115122751457)
+![Image](https://github.com/user-attachments/assets/ea2848c5-ffe4-4aec-a45a-ca7812bab7ce)
 
 ![Image](https://github.com/user-attachments/assets/2896dc2d-bf8a-4c55-b3c7-b29e543e4b4d)
 
