@@ -5,7 +5,7 @@ This project is a **real-world e-commerce application** built with **.NET 9, Rab
 
 We go **beyond CRUD APIs** — this course teaches you how to build **enterprise-grade, event-driven, cloud-native microservices** with **Saga and Outbox patterns** for **transactional consistency**.
 
-## Subscribe here:- https://www.udemy.com/course/building-amazon-style-full-stack-microservices/?couponCode=D06FD2086EDAD9583B47
+[![Udemy Coupon](https://img.shields.io/badge/Udemy-RAHUL90OFF-green)](https://www.udemy.com/course/creating-net-core-microservices-using-clean-architecture/?couponCode=0612BFC514A7672854EC)
 
 ## 🏗 Architecture Overview  
 
@@ -496,5 +496,25 @@ dotnet ef database update --connection \
 
 For Manual SQL creation, refer identity.sql in solution
 
+---
 
-🔗 [Follow me on LinkedIn](https://www.linkedin.com/in/rahulsahay19/)
+## Enroll here
+[![Udemy Coupon](https://img.shields.io/badge/Udemy-RAHUL90OFF-green)](https://www.udemy.com/course/creating-net-core-microservices-using-clean-architecture/?couponCode=0612BFC514A7672854EC)
+
+## 👨‍💻 Author
+
+**Rahul Sahay**
+Principal Architect · Datamatics
+7× Microsoft MVP · IIT Madras AI/ML
+Udemy Instructor · 47K+ Students
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Rahul_Sahay-blue)](https://linkedin.com/in/rahulsahay19)
+[![Udemy](https://img.shields.io/badge/Udemy-Courses-orange)](https://www.udemy.com/user/rahulsahay-2)
+
+🔗 For more information:
+https://rahulsahay.com
+
+> *Production First Architecture. Not Slideware.* — **#ArchitectMindset**
+
+---
+
