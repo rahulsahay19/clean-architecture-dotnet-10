@@ -48,9 +48,11 @@ namespace Catalog.API.Controllers
             return Ok(dtoList);
         }
         [HttpPost]
-        public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] CreateProductCommand command)
+        public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] CreateProductDto createProductDto)
         {
+            var command = createProductDto.ToCommand();
             var result = await _mediator.Send(command);
+
             return Ok(result);
         }
         [HttpDelete("{id}")]

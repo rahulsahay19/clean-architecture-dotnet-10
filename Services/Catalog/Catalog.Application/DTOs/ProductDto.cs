@@ -31,7 +31,7 @@ namespace Catalog.Application.DTOs
         [Required]
         public string TypeId { get; init; }
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
-        public string Price { get; init; }
+        public decimal Price { get; init; }
     }
     public record class UpdateProductDto
     {

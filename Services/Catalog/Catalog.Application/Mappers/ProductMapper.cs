@@ -95,5 +95,19 @@ namespace Catalog.Application.Mappers
             };
         }
 
+        public static CreateProductCommand ToCommand(this CreateProductDto dto)
+        {
+            return new CreateProductCommand
+            {
+                Name = dto.Name,
+                Summary = dto.Summary,
+                Description = dto.Description,
+                ImageFile = dto.ImageFile,
+                BrandId = dto.BrandId,
+                TypeId = dto.TypeId,
+                Price = dto.Price
+            };
+        }
+
     }
 }
