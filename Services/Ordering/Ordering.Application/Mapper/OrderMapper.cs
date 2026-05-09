@@ -112,7 +112,8 @@ namespace Ordering.Application.Mapper
                 CardNumber = message.CardNumber!,
                 Expiration = message.Expiration!,
                 Cvv = message.Cvv!,
-                PaymentMethod = message.PaymentMethod ?? 0
+                PaymentMethod = message.PaymentMethod ?? 0,
+                CorrelationId = message.CorrelationId,
             };
         }
         public static OutboxMessage ToOutboxMessage(Order order, Guid correlationId)
